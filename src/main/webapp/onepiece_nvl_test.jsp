@@ -98,7 +98,7 @@
 	 <div class="container">
       <div class="row">
          <div class="col-sm-6">
-            <h3>1</h3>
+            <h3>1테스트</h3>
             <table border="1">
                <tr>
                   <td>이름</td>
