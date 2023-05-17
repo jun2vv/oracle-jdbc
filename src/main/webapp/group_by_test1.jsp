@@ -21,12 +21,12 @@
 	ResultSet rs = null;
 	
 	/*
-	select department_id 부서id, count(*) 부서인원, sum(salary) 급여합계, round(avg(salary),1) 급여평균, max(salary) 최대급여, min(salary) 최소급여 
-	from employees 
-	where department_id is not null 
-	group by department_id 
-	having count(*) > 1 
-	order by 부서인원 desc; 
+		select department_id 부서id, count(*) 부서인원, sum(salary) 급여합계, round(avg(salary),1) 급여평균, max(salary) 최대급여, min(salary) 최소급여 
+		from employees 
+		where department_id is not null 
+		group by department_id 
+		having count(*) > 1 
+		order by 부서인원 desc; 
 	*/
 	sql = "select department_id 부서id, count(*) 부서인원, sum(salary) 급여합계, round(avg(salary),1) 급여평균, max(salary) 최대급여, min(salary) 최소급여 from employees where department_id is not null group by department_id having count(*) > 1 order by 부서인원 desc";
 	stmt = conn.prepareStatement(sql);
