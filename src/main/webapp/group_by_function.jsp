@@ -23,7 +23,7 @@
 		select department_id, job_id, count(*) from employees
 		group by department_id, job_id;
 	*/
-	sql = "select department_id, job_id, count(*) 부서인원 from employees group by department_id, job_id";
+	sql = "SELECT department_Id, job_id, COUNT(*) 부서인원 from employees GROUP BY GROUPING SETS(department_id, job_id)";
 	stmt = conn.prepareStatement(sql);
 	rs = stmt.executeQuery();
 	System.out.println(stmt + "<--- group_by_function stmt");
@@ -102,74 +102,80 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div>
 	<h1>GROUP BY 확장 함수 사용x 결과물</h1>
-	<table>
-		<tr>
-			<td>부서id</td>
-			<td>직업id</td>
-			<td>부서인원</td>
-		
-		</tr>
-		
-		<%
-			for( HashMap<String, Object> m : list){
+		<table>
+			<tr>
+				<td>부서id</td>
+				<td>직업id</td>
+				<td>부서인원</td>
 			
-		%>
-				<tr>
-					<td><%=(Integer)(m.get("department_id")) %></td>
-					<td><%=(String)(m.get("job_id")) %></td>
-					<td><%=(Integer)(m.get("부서인원")) %></td>
-					
-				</tr>
-		<% 
-			}
-		%>
-	</table>	
-<h1>rollup사용결과물</h1>
-	<table>
-		<tr>
-			<td>부서id</td>
-			<td>직업id</td>
-			<td>부서인원</td>
-		
-		</tr>
-		
-		<%
-			for( HashMap<String, Object> m2 : rollupList){
+			</tr>
 			
-		%>
-				<tr>
-					<td><%=(Integer)(m2.get("department_id")) %></td>
-					<td><%=(String)(m2.get("job_id")) %></td>
-					<td><%=(Integer)(m2.get("부서인원")) %></td>
-					
-				</tr>
-		<% 
-			}
-		%>
-	</table>	
-<h1>cube사용결과물</h1>
-	<table>
-		<tr>
-			<td>부서id</td>
-			<td>직업id</td>
-			<td>부서인원</td>
-		
-		</tr>
-		
-		<%
-			for( HashMap<String, Object> m3 : cubeList){
+			<%
+				for( HashMap<String, Object> m : list){
+				
+			%>
+					<tr>
+						<td><%=(Integer)(m.get("department_id")) %></td>
+						<td><%=(String)(m.get("job_id")) %></td>
+						<td><%=(Integer)(m.get("부서인원")) %></td>
+						
+					</tr>
+			<% 
+				}
+			%>
+		</table>	
+	</div>
+	<div>
+	<h1>rollup사용결과물</h1>
+		<table>
+			<tr>
+				<td>부서id</td>
+				<td>직업id</td>
+				<td>부서인원</td>
 			
-		%>
-				<tr>
-					<td><%=(Integer)(m3.get("department_id")) %></td>
-					<td><%=(String)(m3.get("job_id")) %></td>
-					<td><%=(Integer)(m3.get("부서인원")) %></td>
-					
-				</tr>
-		<% 
-			}
-		%>
-	</table>	
+			</tr>
+			
+			<%
+				for( HashMap<String, Object> m2 : rollupList){
+				
+			%>
+					<tr>
+						<td><%=(Integer)(m2.get("department_id")) %></td>
+						<td><%=(String)(m2.get("job_id")) %></td>
+						<td><%=(Integer)(m2.get("부서인원")) %></td>
+						
+					</tr>
+			<% 
+				}
+			%>
+		</table>	
+	</div>
+	<div>
+	<h1>cube사용결과물</h1>
+		<table>
+			<tr>
+				<td>부서id</td>
+				<td>직업id</td>
+				<td>부서인원</td>
+			
+			</tr>
+			
+			<%
+				for( HashMap<String, Object> m3 : cubeList){
+				
+			%>
+					<tr>
+						<td><%=(Integer)(m3.get("department_id")) %></td>
+						<td><%=(String)(m3.get("job_id")) %></td>
+						<td><%=(Integer)(m3.get("부서인원")) %></td>
+						
+					</tr>
+			<% 
+				}
+			%>
+		</table>	
+	</div>
 </body>
 </html>
