@@ -18,7 +18,6 @@
 	String sql = null;
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
-	
 	/*
 		select department_id, job_id, count(*) from employees
 		group by department_id, job_id;
@@ -39,6 +38,8 @@
 	}
 	System.out.println(list + "<--- group_by_function list");
 	
+	
+	// department_id와 jop_id를 group by 한것을 rollup한것
 	String rollupSql = null;
 	PreparedStatement rollupStmt = null;
 	ResultSet rollupRs = null;
